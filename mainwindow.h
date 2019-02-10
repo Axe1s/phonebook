@@ -22,6 +22,9 @@ private:
     Ui::MainWindow *ui;
     DataBase        *db;
     QSqlTableModel  *model;
+
+    void createUI();
+    void setupModel(const QString &tableName, const QStringList &headers);
 };
 
 #endif // MAINWINDOW_H

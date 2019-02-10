@@ -6,6 +6,7 @@
 #include <QObject>
 #include <QSql>
 #include <QSqlDatabase>
+#include <QString>
 #include <QDebug>
 
 
