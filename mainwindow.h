@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QSqlTableModel>
 
+#include <dialogaddedit.h>
 #include "database.h"
 
 namespace Ui {
@@ -18,6 +19,9 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_pushButtonAdd_clicked();
+
 private:
     Ui::MainWindow *ui;
     DataBase        *db;
@@ -25,6 +29,8 @@ private:
 
     void createUI();
     void setupModel(const QString &tableName, const QStringList &headers);
+    void slotUpdateModel();
+    void slotEditModel(QModelIndex index);
 };
 
 #endif // MAINWINDOW_H

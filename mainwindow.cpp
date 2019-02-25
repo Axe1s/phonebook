@@ -7,11 +7,14 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    ui->setupUi(this);
+    this->setWindowTitle("Телефонный справочник");
+
     //Выделяем память под базу и соединяемся
     db = new DataBase();
     db->connectToDataBase();
 
-    //Инициализируем и передаём имена колонок
+    //Инициализируем модель и передаём имена колонок
     this->setupModel(TABLE, QStringList()    << trUtf8("id")
                                              << trUtf8("Имя")
                                              << trUtf8("Фамилия")
@@ -19,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
                                              << trUtf8("Телефон")
                                              << trUtf8("Адрес")
                    );
-
+    //Выводим таблицу
     this->createUI();
 
 }
@@ -43,8 +46,7 @@ void MainWindow::setupModel(const QString &tableName, const QStringList &headers
 
 void MainWindow::createUI()
 {
-    ui->setupUi(this);
-    this->setWindowTitle("Телефонный справочник");
+
     //Выводим таблицу на виджет
     ui->tableView->setModel(model);
 
@@ -61,4 +63,31 @@ void MainWindow::createUI()
     ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
 
+}
+
+//При надатии кнопки, вызываем окно добавления
+void MainWindow::on_pushButtonAdd_clicked()
+{
+    DialogAddEdit *addDialogAddEdit = new DialogAddEdit();
+    connect(addDialogAddEdit,SIGNAL(signalReady()),this, SLOT(slotUpdateModel()));
+
+    //Вызов диалогового окна
+    addDialogAddEdit->setWindowTitle(trUtf8("Новая запись"));
+    addDialogAddEdit->exec();
+
+}
+//Обновление модели
+void MainWindow::slotUpdateModel()
+{
+    model->select();
+}
+//Активация диалогового окна при передаче индекса выдранной строки
+void MainWindow::slotEditModel(QModelIndex index)
+{
+    DialogAddEdit *addDialogAddEdit = new DialogAddEdit();
+    connect(addDialogAddEdit,SIGNAL(signalReady()),this, SLOT(index.row()));
+
+    //Вызов диалогового окна
+    addDialogAddEdit->setWindowTitle(trUtf8("Редактирование записи"));
+    addDialogAddEdit->exec();
 }

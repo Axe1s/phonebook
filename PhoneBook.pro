@@ -28,14 +28,17 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    database.cpp
+    database.cpp \
+    dialogaddedit.cpp
 
 HEADERS += \
         mainwindow.h \
-    database.h
+    database.h \
+    dialogaddedit.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    dialogaddedit.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

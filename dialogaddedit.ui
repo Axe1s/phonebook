@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DialogAddEdit</class>
+ <widget class="QDialog" name="DialogAddEdit">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QGroupBox" name="groupBoxControl">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>230</y>
+     <width>381</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Управление</string>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>20</y>
+      <width>361</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonOk">
+       <property name="text">
+        <string>Ok</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonCansel">
+       <property name="text">
+        <string>Отмена</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBoxData">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>381</width>
+     <height>221</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Данные</string>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>361</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="labelFname">
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Имя</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="lineEditFname"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="labelLname">
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Фамилия</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="lineEditLName"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="labelDate">
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Дата рождения</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QDateEdit" name="dateEdit">
+       <property name="displayFormat">
+        <string notr="true">dd.MM.yyyy</string>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+       <property name="date">
+        <date>
+         <year>2019</year>
+         <month>2</month>
+         <day>10</day>
+        </date>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="labelPhone">
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Телефон</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="lineEditPhone"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="labelAdress">
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Адрес</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="lineEditAdress"/>
+     </item>
+    </layout>
+    <zorder>labelFname</zorder>
+    <zorder>lineEditFname</zorder>
+    <zorder>labelLname</zorder>
+    <zorder>lineEditLName</zorder>
+    <zorder>labelDate</zorder>
+    <zorder>labelPhone</zorder>
+    <zorder>lineEditPhone</zorder>
+    <zorder>labelAdress</zorder>
+    <zorder>lineEditAdress</zorder>
+    <zorder>dateEdit</zorder>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
