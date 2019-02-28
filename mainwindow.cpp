@@ -63,6 +63,8 @@ void MainWindow::createUI()
     ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
 
+    connect(ui->tableView, SIGNAL(doubleClicked(QModelIndex)), this,SLOT(slotEditModel(QModelIndex)));
+
 }
 
 //При надатии кнопки, вызываем окно добавления
@@ -84,8 +86,8 @@ void MainWindow::slotUpdateModel()
 //Активация диалогового окна при передаче индекса выдранной строки
 void MainWindow::slotEditModel(QModelIndex index)
 {
-    DialogAddEdit *addDialogAddEdit = new DialogAddEdit();
-    connect(addDialogAddEdit,SIGNAL(signalReady()),this, SLOT(index.row()));
+    DialogAddEdit *addDialogAddEdit = new DialogAddEdit(index.row());
+    connect(addDialogAddEdit,SIGNAL(signalReady()),this, SLOT(slotUpdateModel()));
 
     //Вызов диалогового окна
     addDialogAddEdit->setWindowTitle(trUtf8("Редактирование записи"));
