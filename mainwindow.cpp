@@ -15,12 +15,12 @@ MainWindow::MainWindow(QWidget *parent) :
     db->connectToDataBase();
 
     //Инициализируем модель и передаём имена колонок
-    this->setupModel(TABLE, QStringList()    << trUtf8("id")
-                                             << trUtf8("Имя")
-                                             << trUtf8("Фамилия")
-                                             << trUtf8("Дата")
-                                             << trUtf8("Телефон")
-                                             << trUtf8("Адрес")
+    this->setupModel(TABLE, QStringList()    << ("id")
+                                             << ("Имя")
+                                             << ("Фамилия")
+                                             << ("Дата")
+                                             << ("Телефон")
+                                             << ("Адрес")
                    );
     //Выводим таблицу
     this->createUI();
@@ -63,26 +63,28 @@ void MainWindow::createUI()
     ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
 
-    connect(ui->tableView, SIGNAL(doubleClicked(QModelIndex)), this,SLOT(slotEditModel(QModelIndex)));
+    connect(ui->tableView, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(slotEditModel(QModelIndex)));
 
 }
 
-//При надатии кнопки, вызываем окно добавления
+//При нажатии кнопки, вызываем окно добавления
 void MainWindow::on_pushButtonAdd_clicked()
 {
     DialogAddEdit *addDialogAddEdit = new DialogAddEdit();
-    connect(addDialogAddEdit,SIGNAL(signalReady()),this, SLOT(slotUpdateModel()));
+    connect(addDialogAddEdit, SIGNAL(signalReady()), this, SLOT(slotUpdateModel()));
 
     //Вызов диалогового окна
-    addDialogAddEdit->setWindowTitle(trUtf8("Новая запись"));
+    addDialogAddEdit->setWindowTitle(("Новая запись"));
     addDialogAddEdit->exec();
 
 }
+
 //Обновление модели
 void MainWindow::slotUpdateModel()
 {
     model->select();
 }
+
 //Активация диалогового окна при передаче индекса выдранной строки
 void MainWindow::slotEditModel(QModelIndex index)
 {
@@ -90,6 +92,6 @@ void MainWindow::slotEditModel(QModelIndex index)
     connect(addDialogAddEdit,SIGNAL(signalReady()),this, SLOT(slotUpdateModel()));
 
     //Вызов диалогового окна
-    addDialogAddEdit->setWindowTitle(trUtf8("Редактирование записи"));
+    addDialogAddEdit->setWindowTitle(("Редактирование записи"));
     addDialogAddEdit->exec();
 }

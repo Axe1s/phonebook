@@ -21,16 +21,18 @@ public:
 
 private slots:
     void on_pushButtonAdd_clicked();
+    void slotUpdateModel();
+    void slotEditModel(QModelIndex index);
 
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow  *ui;
     DataBase        *db;
     QSqlTableModel  *model;
 
     void createUI();
     void setupModel(const QString &tableName, const QStringList &headers);
-    void slotUpdateModel();
-    void slotEditModel(QModelIndex index);
+
+
 };
 
 #endif // MAINWINDOW_H
