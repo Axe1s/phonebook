@@ -32,8 +32,7 @@ private:
 
 private:
     void setupModel();
-//    void createUi();
-//    void accept();
+
 };
 
 #endif // DIALOGADDEDIT_H

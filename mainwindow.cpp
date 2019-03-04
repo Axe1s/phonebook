@@ -2,7 +2,6 @@
 #include "ui_mainwindow.h"
 
 
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -64,6 +63,7 @@ void MainWindow::createUI()
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
 
     connect(ui->tableView, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(slotEditModel(QModelIndex)));
+    connect(ui->pushButtonEdit, SIGNAL(clicked()), this, SLOT(slotEditModel(QModelIndex)));
 
 }
 
@@ -94,4 +94,44 @@ void MainWindow::slotEditModel(QModelIndex index)
     //Вызов диалогового окна
     addDialogAddEdit->setWindowTitle(("Редактирование записи"));
     addDialogAddEdit->exec();
+}
+
+//void MainWindow::on_pushButtonEdit_clicked(QModelIndex index)
+//{
+//     DialogAddEdit *addDialogAddEdit = new DialogAddEdit(index.row());
+//    connect(addDialogAddEdit, SIGNAL(signalReady()), this, SLOT(slotUpdateModel()));
+
+//    //Вызов диалогового окна
+//    addDialogAddEdit->setWindowTitle(("Редактирование записи"));
+//    addDialogAddEdit->exec();
+//}
+
+//Удаление записей в таблице
+void MainWindow::on_pushButtonRemove_clicked()
+{
+    //Создаём запрос на удаление
+    QMessageBox::StandardButtons stButton;
+    // Присвоение значений для выбора пользователя: "Yes" или "No"
+    stButton = QMessageBox::question(this, "Подтверждение удаления", "Вы точно хотите удалить запись?", QMessageBox::Yes | QMessageBox::No );
+
+    //Проверяем подтверждение
+    if (stButton == QMessageBox::Yes)
+    {
+        model->removeRow(ui->tableView->currentIndex().row());
+        slotUpdateModel();
+    }
+
+}
+
+void MainWindow::on_quit_triggered()
+{
+    this->close();
+}
+
+void MainWindow::on_version_triggered()
+{
+    QMessageBox stMessege;
+    stMessege.setText("Опрограмме");
+    stMessege.setInformativeText("Самая первая версия программы для обучения");
+    stMessege.setStandardButtons((QMessageBox::Ok));
 }

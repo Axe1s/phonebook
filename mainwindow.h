@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QSqlTableModel>
 
-#include <dialogaddedit.h>
+#include "dialogaddedit.h"
 #include "database.h"
 
 namespace Ui {
@@ -21,8 +21,15 @@ public:
 
 private slots:
     void on_pushButtonAdd_clicked();
+//    void on_pushButtonEdit_clicked(QModelIndex index);
+    void on_pushButtonRemove_clicked();
+
     void slotUpdateModel();
     void slotEditModel(QModelIndex index);
+
+    void on_quit_triggered();
+
+    void on_version_triggered();
 
 private:
     Ui::MainWindow  *ui;

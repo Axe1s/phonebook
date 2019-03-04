@@ -17,7 +17,9 @@ DialogAddEdit::DialogAddEdit(int row, QWidget *parent) :
         if(row == -1){
             model->insertRow(model->rowCount(QModelIndex()));
             mapper->toLast();
-                } else {
+                      }
+        //Иначе работаем с выбранной записью
+        else {
             mapper->setCurrentModelIndex(model->index(row,0));
         }
 }
